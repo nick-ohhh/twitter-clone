@@ -1,5 +1,9 @@
 # syntax=docker/dockerfile:1
-FROM golang:1.16-alpine
+FROM golang:1.19-alpine
+
+# have compiler not use c libraries; alpine doesn't have libc
+# https://www.musl-libc.org/
+ENV CGO_ENABLED=0
 
 # setup a work directory for go
 WORKDIR /app
